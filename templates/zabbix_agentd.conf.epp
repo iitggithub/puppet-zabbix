@@ -3,9 +3,9 @@
 
 ########## This configuration file is managed by puppet ##########
 
-<% if $facts[osfamily] != '' { -%>
+<% if $zabbix::agent::LogType { -%>
+LogType=<%= $zabbix::agent::LogType %>
 <% } -%>
-
 <% if $zabbix::agent::ListenPort { -%>
 ListenPort=<%= $zabbix::agent::ListenPort %>
 <% } -%>
@@ -21,7 +21,7 @@ LogFileSize=<%= $zabbix::agent::LogFileSize %>
 <% if $zabbix::agent::DebugLevel { -%>
 DebugLevel=<%= $zabbix::agent::DebugLevel %>
 <% } -%>
-<% if $zabbix::agent::PidFile { -%>
+<% if $zabbix::agent::PidFile and $facts[osfamily] != 'Windows' { -%>
 PidFile=<%= $zabbix::agent::PidFile %>
 <% } -%>
 <% if $zabbix::agent::ListenIP { -%>
@@ -30,20 +30,28 @@ ListenIP=<%= $zabbix::agent::ListenIP %>
 <% if $zabbix::agent::Timeout { -%>
 Timeout=<%= $zabbix::agent::Timeout %>
 <% } -%>
-<% if $zabbix::agent::AllowRoot { -%>
+<% if $zabbix::agent::AllowRoot and $facts[osfamily] != 'Windows' { -%>
 AllowRoot=1
 <% } else {-%>
 AllowRoot=0
+<% } -%>
+<% if $zabbix::agent::User and $facts[osfamily] != 'Windows' { -%>
+User=<%= $zabbix::agent::User %>
+<% } -%>
+<% unless $zabbix::agent::PerfCounter.empty and $facts[osfamily] != 'Windows' {-%>
+<% $zabbix::agent::PerfCounter.each |$perfcounter| {-%>
+PerfCounter=<%= $perfcounter %>
+<% } -%>
 <% } -%>
 <% unless $zabbix::agent::Include.empty {-%>
 <% $zabbix::agent::Include.each |$include| {-%>
 Include=<%= $include %>
 <% } -%>
 <% } -%>
-<% if $zabbix::agent::LoadModulePath { -%>
+<% if $zabbix::agent::LoadModulePath and $facts[osfamily] != 'Windows'{ -%>
 LoadModulePath=<%= $zabbix::agent::LoadModulePath %>
 <% } -%>
-<% unless $zabbix::agent::LoadModule.empty {-%>
+<% unless $zabbix::agent::LoadModule.empty and $facts[osfamily] != 'Windows'{-%>
 <% $zabbix::agent::LoadModule.each |$loadmodule| {-%>
 LoadModule=<%= $loadmodule %>
 <% } -%>
