@@ -1,0 +1,32 @@
+---
+zabbix::agent::install_options: []
+zabbix::agent::uninstall_options: []
+
+zabbix::agent::package_name: 'zabbix-agent'
+zabbix::agent::service_name: 'zabbix-agent'
+
+zabbix::agent::ListenPort: 10050
+zabbix::agent::SourceIP: ~
+zabbix::agent::LogFile: ~
+zabbix::agent::PidFile: '/tmp/zabbix_agentd.pid'
+zabbix::agent::ListenIP: '0.0.0.0'
+zabbix::agent::User: 'zabbix'
+zabbix::agent::Include:
+ - '/etc/zabbix/zabbix_agentd.d/'
+zabbix::agent::LoadModule: []
+zabbix::agent::Hostname: ~
+zabbix::agent::HostnameItem: 'system.hostname'
+zabbix::agent::HostMetadata: ~
+zabbix::agent::HostMetadataItem: ~ 
+zabbix::agent::RefreshActiveChecks: 120
+zabbix::agent::BufferSend: 5
+zabbix::agent::BufferSize: 100
+zabbix::agent::MaxLinesPerSecond: 20
+zabbix::agent::Alias: []
+zabbix::agent::EnableRemoteCommands: 0
+zabbix::agent::LogRemoteCommands: 0
+zabbix::agent::Server: []
+zabbix::agent::StartAgents: 3
+zabbix::agent::ServerActive: []
+zabbix::agent::UnsafeUserParameters: 0
+zabbix::agent::UserParameter: []

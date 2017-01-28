@@ -1,0 +1,16 @@
+---
+zabbix::package_name: 'zabbix'
+zabbix::package_manage: true
+zabbix::package_ensure: 'installed'
+zabbix::package_name: 'zabbix'
+zabbix::service_manage: true
+zabbix::service_enable: true
+zabbix::service_ensure: 'running'
+zabbix::LogType: 'file'
+zabbix::LogFileSize: 1
+zabbix::DebugLevel: 3
+zabbix::Timeout: 3
+zabbix::AllowRoot: 0
+zabbix::LoadModulePath:
+  - '${libdir}/modules'
+zabbix::manage_repo: true
