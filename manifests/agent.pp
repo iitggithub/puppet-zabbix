@@ -52,11 +52,11 @@ class zabbix::agent inherits zabbix (
                 'cert']]                   $TLSAccept,
   Optional[Stdlib::Absolutepath]           $TLSCAFile,
   Optional[Stdlib::Absolutepath]           $TLSCRLFile,
-  Optional[String]           $TLSServerCertIssuer,
-  Optional[String]           $TLSServerCertSubject,
+  Optional[String]                         $TLSServerCertIssuer,
+  Optional[String]                         $TLSServerCertSubject,
   Optional[Stdlib::Absolutepath]           $TLSCertFile,
   Optional[Stdlib::Absolutepath]           $TLSKeyFile,
-  Optional[String]           $TLSPSKIdentity,
+  Optional[String]                         $TLSPSKIdentity,
   Optional[Stdlib::Absolutepath]           $TLSPSKFile,
 
 ) {
@@ -66,12 +66,10 @@ class zabbix::agent inherits zabbix (
   contain ${zabbix}::config
   contain zabbix::user
   contain ${zabbix}::service
-  contain ${zabbix}::cron
 
   Class ["${zabbix}::install"] ->
   Class [ "zabbix::user"] ->
   Class [ "${zabbix}::config"] ->
-  Class [ "${zabbix}::service"] ->
-  Class [ "${zabbix}::cron"]
+  Class [ "${zabbix}::service"]
 
 }
