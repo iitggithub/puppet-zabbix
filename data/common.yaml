@@ -2,10 +2,10 @@
 zabbix::package_name: 'zabbix'
 zabbix::package_manage: true
 zabbix::package_ensure: 'installed'
-zabbix::package_name: 'zabbix'
+zabbix::service_name: 'zabbix'
 zabbix::service_manage: true
-zabbix::service_enable: true
 zabbix::service_ensure: 'running'
+zabbix::service_enable: true
 zabbix::logtype: 'file'
 zabbix::logfilesize: 1
 zabbix::debuglevel: 3

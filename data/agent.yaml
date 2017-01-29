@@ -3,7 +3,13 @@ zabbix::agent::install_options: []
 zabbix::agent::uninstall_options: []
 
 zabbix::agent::package_name: 'zabbix-agent'
+zabbix::agent::package_manage: true
+zabbix::agent::package_ensure: 'installed'
+
 zabbix::agent::service_name: 'zabbix-agent'
+zabbix::agent::service_manage: true
+zabbix::agent::service_ensure: 'running'
+zabbix::agent::service_enable: true
 
 zabbix::agent::listenport: 10050
 zabbix::agent::sourceip: ~
