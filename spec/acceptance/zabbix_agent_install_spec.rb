@@ -5,8 +5,12 @@ when 'Windows'
   source = ''
   install_options = ['']
   uninstall_options = ['']
+  packagename = 'zabbix-agent'
+  servicename = 'zabbix-agent'
 when 'Darwin'
   source = ''
+  packagename = 'zabbix-agent'
+  servicename = 'zabbix-agent'
 else
   packagename = 'zabbix-agent'
   servicename = 'zabbix-agent'
