@@ -1,17 +1,22 @@
 # PRIVATE CLASS: do not call directly
 class zabbix::agent::config inherits zabbix::agent {
 
-  if ($zabbix::agent::tlsconnect) and (!$zabbix::agent::tlscertfile and 
-     (!$zabbix::agent::tlspskidentity and !$zabbix::agent::tlspskfile)) {
-     fail('TLSConnect is enabled but TLSCertFile is not defined and neither is TLSPSKIdentity or TLSPSKFile.')
+  $_tlsconnect     = $zabbix::agent::tlsconnect
+  $_tlsaccept      = $zabbix::agent::tlsaccept
+  $_tlscertfile    = $zabbix::agent::tlscertfile
+  $_tlspskidentity = $zabbix::agent::tlspskidentity
+  $_tlspskfile     = $zabbix::agent::tlspskfile
+  $_osfamily       = downcase($::facts['osfamily'])
+
+  if ($_tlsconnect) and (!$_tlscertfile and (!$_tlspskidentity and !$_tlspskfile)) {
+    fail('TLSConnect is enabled but TLSCertFile is not defined \
+         and neither is TLSPSKIdentity and TLSPSKFile.')
   }
 
-  if ($zabbix::agent::tlsaccept) and (!$zabbix::agent::tlscertfile and
-     (!$zabbix::agent::tlspskidentity and !$zabbix::agent::tlspskfile)) {
-     fail('TLSConnect is enabled but TLSCertFile is not defined and neither is TLSPSKIdentity or TLSPSKFile.')
+  if ($_tlsaccept) and (!$_tlscertfile and (!$_tlspskidentity and !$_tlspskfile)) {
+     fail('TLSConnect is enabled but TLSCertFile is not defined',
+          ' and neither is TLSPSKIdentity and TLSPSKFile.')
   }
- 
-  $config = "zabbix::agent::config::$facts[osfamily]"
 
-  include $config
+  include "zabbix::agent::config::${_osfamily}"
 }

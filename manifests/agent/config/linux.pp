@@ -13,10 +13,10 @@ class zabbix::agent::config::linux inherits zabbix::agent::config {
   }
 
   file { '/etc/zabbix/zabbix_agentd.d':
-    ensure  => directory,
-    mode    => '0755',
-    owner   => '0',
-    group   => '0',
+    ensure => directory,
+    mode   => '0755',
+    owner  => '0',
+    group  => '0',
   }
 
   file { '/etc/zabbix/zabbix_agentd.conf':
