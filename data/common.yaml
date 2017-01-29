@@ -6,11 +6,11 @@ zabbix::package_name: 'zabbix'
 zabbix::service_manage: true
 zabbix::service_enable: true
 zabbix::service_ensure: 'running'
-zabbix::LogType: 'file'
-zabbix::LogFileSize: 1
-zabbix::DebugLevel: 3
-zabbix::Timeout: 3
-zabbix::AllowRoot: 0
-zabbix::LoadModulePath:
+zabbix::logtype: 'file'
+zabbix::logfilesize: 1
+zabbix::debuglevel: 3
+zabbix::timeout: 3
+zabbix::allowroot: 0
+zabbix::loadmodulepath:
   - '${libdir}/modules'
-zabbix::manage_repo: true
+zabbix::anage_repo: true

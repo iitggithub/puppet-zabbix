@@ -17,4 +17,5 @@ class zabbix::agent::install inherits zabbix::agent {
       install_options   => $zabbix::agent::install_options,
       uninstall_options => $zabbix::agent::uninstall_options,
     }
+  }
 }

@@ -3,141 +3,141 @@
 
 ########## This configuration file is managed by puppet ##########
 
-<% if $zabbix::agent::LogType { -%>
-LogType=<%= $zabbix::agent::LogType %>
+<% if $zabbix::agent::logtype { -%>
+LogType=<%= $zabbix::agent::logtype %>
 <% } -%>
-<% if $zabbix::agent::ListenPort { -%>
-ListenPort=<%= $zabbix::agent::ListenPort %>
+<% if $zabbix::agent::listenport { -%>
+ListenPort=<%= $zabbix::agent::listenport %>
 <% } -%>
-<% if $zabbix::agent::SourceIP { -%>
-SourceIP=<%= $zabbix::agent::SourceIP %>
+<% if $zabbix::agent::sourceip { -%>
+SourceIP=<%= $zabbix::agent::sourceip %>
 <% } -%>
-<% if $zabbix::agent::LogFile { -%>
-LogFile=<%= $zabbix::agent::LogFile %>
+<% if $zabbix::agent::logfile { -%>
+LogFile=<%= $zabbix::agent::logfile %>
 <% } -%>
-<% if $zabbix::agent::LogFileSize { -%>
-LogFileSize=<%= $zabbix::agent::LogFileSize %>
+<% if $zabbix::agent::logfilesize { -%>
+LogFileSize=<%= $zabbix::agent::logfilesize %>
 <% } -%>
-<% if $zabbix::agent::DebugLevel { -%>
-DebugLevel=<%= $zabbix::agent::DebugLevel %>
+<% if $zabbix::agent::debuglevel { -%>
+DebugLevel=<%= $zabbix::agent::debuglevel %>
 <% } -%>
-<% if $zabbix::agent::PidFile and $facts[osfamily] != 'Windows' { -%>
-PidFile=<%= $zabbix::agent::PidFile %>
+<% if $zabbix::agent::pidfile and $facts[osfamily] != 'Windows' { -%>
+PidFile=<%= $zabbix::agent::pidfile %>
 <% } -%>
-<% if $zabbix::agent::ListenIP { -%>
-ListenIP=<%= $zabbix::agent::ListenIP %>
+<% if $zabbix::agent::listenip { -%>
+ListenIP=<%= $zabbix::agent::listenip %>
 <% } -%>
-<% if $zabbix::agent::Timeout { -%>
-Timeout=<%= $zabbix::agent::Timeout %>
+<% if $zabbix::agent::timeout { -%>
+Timeout=<%= $zabbix::agent::timeout %>
 <% } -%>
-<% if $zabbix::agent::AllowRoot and $facts[osfamily] != 'Windows' { -%>
+<% if $zabbix::agent::allowroot and $facts[osfamily] != 'Windows' { -%>
 AllowRoot=1
 <% } else {-%>
 AllowRoot=0
 <% } -%>
-<% if $zabbix::agent::User and $facts[osfamily] != 'Windows' { -%>
-User=<%= $zabbix::agent::User %>
+<% if $zabbix::agent::user and $facts[osfamily] != 'Windows' { -%>
+User=<%= $zabbix::agent::user %>
 <% } -%>
-<% unless $zabbix::agent::PerfCounter.empty and $facts[osfamily] != 'Windows' {-%>
-<% $zabbix::agent::PerfCounter.each |$perfcounter| {-%>
+<% unless $zabbix::agent::perfcounter.empty and $facts[osfamily] != 'Windows' {-%>
+<% $zabbix::agent::perfcounter.each |$perfcounter| {-%>
 PerfCounter=<%= $perfcounter %>
 <% } -%>
 <% } -%>
-<% unless $zabbix::agent::Include.empty {-%>
-<% $zabbix::agent::Include.each |$include| {-%>
+<% unless $zabbix::agent::include.empty {-%>
+<% $zabbix::agent::include.each |$include| {-%>
 Include=<%= $include %>
 <% } -%>
 <% } -%>
-<% if $zabbix::agent::LoadModulePath and $facts[osfamily] != 'Windows'{ -%>
+<% if $zabbix::agent::loadmodulepath and $facts[osfamily] != 'Windows'{ -%>
 LoadModulePath=<%= $zabbix::agent::LoadModulePath %>
 <% } -%>
-<% unless $zabbix::agent::LoadModule.empty and $facts[osfamily] != 'Windows'{-%>
-<% $zabbix::agent::LoadModule.each |$loadmodule| {-%>
+<% unless $zabbix::agent::loadmodule.empty and $facts[osfamily] != 'Windows'{-%>
+<% $zabbix::agent::loadmodule.each |$loadmodule| {-%>
 LoadModule=<%= $loadmodule %>
 <% } -%>
 <% } -%>
-<% if $zabbix::agent::Hostname { -%>
-Hostname=<%= $zabbix::agent::Hostname %>
+<% if $zabbix::agent::hostname { -%>
+Hostname=<%= $zabbix::agent::hostname %>
 <% } -%>
-<% if $zabbix::agent::HostnameItem { -%>
-HostnameItem=<%= $zabbix::agent::HostnameItem %>
+<% if $zabbix::agent::hostnameitem { -%>
+HostnameItem=<%= $zabbix::agent::hostnameitem %>
 <% } -%>
-<% if $zabbix::agent::HostMetadata { -%>
-HostMetadata=\"<%= $zabbix::agent::HostMetadata %>\"
+<% if $zabbix::agent::hostmetadata { -%>
+HostMetadata=\"<%= $zabbix::agent::hostmetadata %>\"
 <% } -%>
-<% if $zabbix::agent::RefreshActiveChecks { -%>
-RefreshActiveChecks=<%= $zabbix::agent::RefreshActiveChecks %>
+<% if $zabbix::agent::refreshactivechecks { -%>
+RefreshActiveChecks=<%= $zabbix::agent::refreshactivechecks %>
 <% } -%>
-<% if $zabbix::agent::BufferSend { -%>
-BufferSend=<%= $zabbix::agent::BufferSend %>
+<% if $zabbix::agent::buffersend { -%>
+BufferSend=<%= $zabbix::agent::buffersend %>
 <% } -%>
-<% if $zabbix::agent::BufferSize { -%>
-BufferSize=<%= $zabbix::agent::BufferSize %>
+<% if $zabbix::agent::buffersize { -%>
+BufferSize=<%= $zabbix::agent::buffersize %>
 <% } -%>
-<% if $zabbix::agent::MaxLinesPerSecond { -%>
-MaxLinesPerSecond=<%= $zabbix::agent::MaxLinesPerSecond %>
+<% if $zabbix::agent::maxlinespersecond { -%>
+MaxLinesPerSecond=<%= $zabbix::agent::maxlinespersecond %>
 <% } -%>
-<% unless $zabbix::agent::Alias.empty {-%>
-<% $zabbix::agent::Alias.each |$alias| {-%>
-Alias=<%= $alias %>
+<% unless $zabbix::agent::zalias.empty {-%>
+<% $zabbix::agent::zalias.each |$zalias| {-%>
+Alias=<%= $zalias %>
 <% } -%>
 <% } -%>
-<% if $zabbix::agent::EnableRemoteCommands { -%>
+<% if $zabbix::agent::enableremotecommands { -%>
 EnableRemoteCommands=1
 <% } else {-%>
 EnableRemoteCommands=0
 <% } -%>
-<% if $zabbix::agent::LogRemoteCommands { -%>
+<% if $zabbix::agent::logremotecommands { -%>
 LogRemoteCommands=1
 <% } else {-%>
 LogRemoteCommands=0
 <% } -%>
-<% if $zabbix::agent::Server { -%>
-Server=<%= $zabbix::agent::Server.map{ |server| server }.join(',') -%>
+<% if $zabbix::agent::server { -%>
+Server=<%= $zabbix::agent::server.map{ |server| server }.join(',') -%>
 <% } -%>
-<% if $zabbix::agent::StartAgents { -%>
-StartAgents=<%= $zabbix::agent::StartAgents %>
+<% if $zabbix::agent::startagents { -%>
+StartAgents=<%= $zabbix::agent::startagents %>
 <% } -%>
-<% if $zabbix::agent::ServerActive { -%>
-ServerActive=<%= $zabbix::agent::ServerActive.map{ |serveractive| serveractive }.join(',') -%>
+<% if $zabbix::agent::serveractive { -%>
+ServerActive=<%= $zabbix::agent::serveractive.map{ |serveractive| serveractive }.join(',') -%>
 <% } -%>
-<% if $zabbix::agent::UnsafeUserParameters { -%>
+<% if $zabbix::agent::unsafeuserparameters { -%>
 UnsafeUserParameters=1
 <% } else {-%>
 UnsafeUserParameters=0
 <% } -%>
-<% unless $zabbix::agent::UserParameter.empty {-%>
-<% $zabbix::agent::UserParameter.each |$userparameter| {-%>
+<% unless $zabbix::agent::userparameter.empty {-%>
+<% $zabbix::agent::userparameter.each |$userparameter| {-%>
 UserParameter=<%= $userparameter %>
 <% } -%>
 <% } -%>
-<% if $zabbix::agent::TLSConnect { -%>
-TLSConnect=<%= $zabbix::agent::TLSConnect %>
+<% if $zabbix::agent::tlsconnect { -%>
+TLSConnect=<%= $zabbix::agent::tlsconnect %>
 <% } -%>
-<% if $zabbix::agent::TLSAccept { -%>
-TLSAccept=<%= $zabbix::agent::TLSAccept %>
+<% if $zabbix::agent::tlsaccept { -%>
+TLSAccept=<%= $zabbix::agent::tlsaccept %>
 <% } -%>
-<% if $zabbix::agent::TLSCAFile { -%>
-TLSCAFile=<%= $zabbix::agent::TLSCAFile %>
+<% if $zabbix::agent::tlscafile { -%>
+TLSCAFile=<%= $zabbix::agent::tlscafile %>
 <% } -%>
-<% if $zabbix::agent::TLSCRLFile { -%>
-TLSCRLFile=<%= $zabbix::agent::TLSCRLFile %>
+<% if $zabbix::agent::tlscrlfile { -%>
+TLSCRLFile=<%= $zabbix::agent::tlscrlfile %>
 <% } -%>
-<% if $zabbix::agent::TLSServerCertIssuer { -%>
-TLSServerCertIssuer=\"<%= $zabbix::agent::TLSServerCertIssuer %>\"
+<% if $zabbix::agent::tlsservercertissuer { -%>
+TLSServerCertIssuer=\"<%= $zabbix::agent::tlsservercertissuer %>\"
 <% } -%>
-<% if $zabbix::agent::TLSServerCertSubject { -%>
-TLSServerCertSubject=\"<%= $zabbix::agent::TLSServerCertSubject %>\"
+<% if $zabbix::agent::tlsservercertsubject { -%>
+TLSServerCertSubject=\"<%= $zabbix::agent::tlsservercertsubject %>\"
 <% } -%>
-<% if $zabbix::agent::TLSCertFile { -%>
-TLSCertFile=<%= $zabbix::agent::TLSCertFile %>
+<% if $zabbix::agent::tlscertfile { -%>
+TLSCertFile=<%= $zabbix::agent::tlscertfile %>
 <% } -%>
-<% if $zabbix::agent::TLSKeyFile { -%>
-TLSKeyFile=<%= $zabbix::agent::TLSKeyFile %>
+<% if $zabbix::agent::tlskeyfile { -%>
+TLSKeyFile=<%= $zabbix::agent::tlskeyfile %>
 <% } -%>
-<% if $zabbix::agent::TLSPSKIdentity { -%>
-TLSPSKIdentity=\"<%= $zabbix::agent::TLSPSKIdentity %>\"
+<% if $zabbix::agent::tlspskidentity { -%>
+TLSPSKIdentity=\"<%= $zabbix::agent::tlspskidentity %>\"
 <% } -%>
-<% if $zabbix::agent::TLSPSKFile { -%>
-TLSPSKFile=<%= $zabbix::agent::TLSPSKFile %>
+<% if $zabbix::agent::tlspskfile { -%>
+TLSPSKFile=<%= $zabbix::agent::tlspskfile %>
 <% } -%>

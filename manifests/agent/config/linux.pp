@@ -2,8 +2,8 @@
 class zabbix::agent::config::linux inherits zabbix::agent::config {
 
   $_service_name = $zabbix::agent::service_name
-  $_logFile      = $zabbix::agent::logFile
-  $_pidFile      = $zabbix::agent::pidFile
+  $_logfile      = $zabbix::agent::logfile
+  $_pidfile      = $zabbix::agent::pidfile
 
   file { '/etc/zabbix':
     ensure => directory,
@@ -28,9 +28,9 @@ class zabbix::agent::config::linux inherits zabbix::agent::config {
     notify  => Service[$_service_name],
   }
 
-  if $_logFile {
+  if $_logfile {
     # Rip out the path to the Log file
-    if $_logFile =~ /(.*\/)(.*\.log)/ {
+    if $_logfile =~ /(.*\/)(.*\.log)/ {
       $_log_path = $1
     }
     file { $_log_path:
@@ -39,7 +39,7 @@ class zabbix::agent::config::linux inherits zabbix::agent::config {
       owner  => 'zabbix',
       group  => 'zabbix',
     }
-    file { $_logFile:
+    file { $_logfile:
       ensure  => 'file',
       mode    => '0644',
       owner   => 'zabbix',
@@ -48,9 +48,9 @@ class zabbix::agent::config::linux inherits zabbix::agent::config {
     }
   }
 
-  if $_pidFile {
+  if $_pidfile {
     # Rip out the path to the PID file
-    if $_pidFile =~ /(.*\/)(.*\.pid)/ {
+    if $_pidfile =~ /(.*\/)(.*\.pid)/ {
       $_pid_path = $1
     }
     file { $_pid_path:
@@ -60,7 +60,7 @@ class zabbix::agent::config::linux inherits zabbix::agent::config {
       group  => 'zabbix',
     }
 
-    file { $_pidFile:
+    file { $_pidfile:
       ensure  => 'file',
       owner   => 'zabbix',
       group   => 'zabbix',

@@ -1,7 +1,7 @@
 # Zabbix agent main class
-class zabbix::agent inherits zabbix (
+class zabbix::agent (
 
-  Optional[String]                            $lineEndings,
+  Optional[String]                            $lineendings,
 
   Boolean                                     $package_manage,
   String                                      $package_ensure,
@@ -13,66 +13,66 @@ class zabbix::agent inherits zabbix (
   Optional[String]                            $install_options,
   Optional[String]                            $uninstall_options,
 
-  Optional[Enum['system', 'file', 'console']] $LogType,
-  Optional[Integer[0, 65535]]                 $ListenPort,
-  Optional[String]                            $SourceIP,
-  Optional[Stdlib::Absolutepath]              $LogFile,
-  Optional[Integer[0,1024]]                   $LogFileSize,
-  Optional[Integer[0,5]]                      $DebugLevel,
-  Optional[Stdlib::Absolutepath]              $PidFile,
-  Optional[String]                            $ListenIP,
-  Optional[Integer[1,30]]                     $Timeout,
-  Optional[Variant[Boolean, Integer[0,1]]]    $AllowRoot,
-  Optional[String]                            $User,
-  Optional[Array[Stdlib::Absolutepath]]       $Include,
-  Optional[String]                            $LoadModulePath,
-  Optional[Array[String]]                     $LoadModule,
+  Optional[Enum['system', 'file', 'console']] $logtype,
+  Optional[Integer[0, 65535]]                 $listenport,
+  Optional[String]                            $sourceip,
+  Optional[Stdlib::Absolutepath]              $logfile,
+  Optional[Integer[0,1024]]                   $logfilesize,
+  Optional[Integer[0,5]]                      $debuglevel,
+  Optional[Stdlib::Absolutepath]              $pidfile,
+  Optional[String]                            $listenip,
+  Optional[Integer[1,30]]                     $timeout,
+  Optional[Variant[Boolean, Integer[0,1]]]    $allowroot,
+  Optional[String]                            $user,
+  Optional[Array[Stdlib::Absolutepath]]       $include,
+  Optional[String]                            $loadmodulepath,
+  Optional[Array[String]]                     $loadmodule,
 
-  Optional[String]                            $Hostname,
-  Optional[String]                            $HostnameItem,
+  Optional[String]                            $hostname,
+  Optional[String]                            $hostnameitem,
 
-  Optional[String[0,255]]                     $HostMetadata,
-  Optional[String]                            $HostMetadataItem,
-  Optional[Integer[60,3600]]                  $RefreshActiveChecks,
-  Optional[Integer[1,3600]]                   $BufferSend,
-  Optional[Integer[2,65535]]                  $BufferSize,
-  Optional[Integer[1,1000]]                   $MaxLinesPerSecond,
-  Optional[Array[String]]                     $Alias,
-  Optional[Variant[Boolean, Integer[0,1]]]    $EnableRemoteCommands,
-  Optional[Variant[Boolean, Integer[0,1]]]    $LogRemoteCommands,
-  Optional[Array[String]]                     $Server,
-  Optional[Integer[0,100]]                    $StartAgents,
-  Optional[Array[String]]                     $ServerActive,
-  Optional[Variant[Boolean, Integer[0,1]]]    $UnsafeUserParameters,
-  Optional[Array[String]]                     $UserParameter,
-  Optional[Array[String]]                     $PerfCounter,
+  Optional[String[0,255]]                     $hostmetadata,
+  Optional[String]                            $hostmetadataitem,
+  Optional[Integer[60,3600]]                  $refreshactivechecks,
+  Optional[Integer[1,3600]]                   $buffersend,
+  Optional[Integer[2,65535]]                  $buffersize,
+  Optional[Integer[1,1000]]                   $maxlinespersecond,
+  Optional[Array[String]]                     $zalias,
+  Optional[Variant[Boolean, Integer[0,1]]]    $enableremotecommands,
+  Optional[Variant[Boolean, Integer[0,1]]]    $logremotecommands,
+  Optional[Array[String]]                     $server,
+  Optional[Integer[0,100]]                    $startagents,
+  Optional[Array[String]]                     $serveractive,
+  Optional[Variant[Boolean, Integer[0,1]]]    $unsafeuserparameters,
+  Optional[Array[String]]                     $userparameter,
+  Optional[Array[String]]                     $perfcounter,
 
   Optional[Enum['unencrypted',
                 'psk',
-                'cert']]                      $TLSConnect,
+                'cert']]                      $tlsconnect,
   Optional[Enum['unencrypted',
                 'psk',
-                'cert']]                      $TLSAccept,
-  Optional[Stdlib::Absolutepath]              $TLSCAFile,
-  Optional[Stdlib::Absolutepath]              $TLSCRLFile,
-  Optional[String]                            $TLSServerCertIssuer,
-  Optional[String]                            $TLSServerCertSubject,
-  Optional[Stdlib::Absolutepath]              $TLSCertFile,
-  Optional[Stdlib::Absolutepath]              $TLSKeyFile,
-  Optional[String]                            $TLSPSKIdentity,
-  Optional[Stdlib::Absolutepath]              $TLSPSKFile,
+                'cert']]                      $tlsaccept,
+  Optional[Stdlib::Absolutepath]              $tlscafile,
+  Optional[Stdlib::Absolutepath]              $tlscrlfile,
+  Optional[String]                            $tlsservercertissuer,
+  Optional[String]                            $tlsservercertsubject,
+  Optional[Stdlib::Absolutepath]              $tlscertfile,
+  Optional[Stdlib::Absolutepath]              $tlskeyfile,
+  Optional[String]                            $tlspskidentity,
+  Optional[Stdlib::Absolutepath]              $tlspskfile,
 
 ) {
   $zabbix = 'zabbix::agent'
 
-  contain ${zabbix}::install
-  contain ${zabbix}::config
-  contain zabbix::user
-  contain ${zabbix}::service
+  contain "${zabbix}::install"
+  contain "${zabbix}::config"
+  contain 'zabbix::user'
+  contain "${zabbix}::service"
 
-  Class ["${zabbix}::install"] ->
-  Class [ "zabbix::user"] ->
-  Class [ "${zabbix}::config"] ->
-  Class [ "${zabbix}::service"]
+  Class["${zabbix}::install"] ->
+  Class['zabbix::user'] ->
+  Class["${zabbix}::config"] ->
+  Class["${zabbix}::service"]
 
 }
