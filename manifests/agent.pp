@@ -1,5 +1,5 @@
 # Zabbix agent main class
-class zabbix::agent (
+class zabbix::agent inherits zabbix (
 
   Optional[String]                            $lineendings,
 
