@@ -1,21 +1,20 @@
----
 version: 5
 datadir: data
 hierarchy:
   - name: "Full Version"
-    path: "%{facts.os.name}-%{facts.os.release.full}".yaml
+    path: "%{facts.os.name}-%{facts.os.release.full}.yaml"
     data_hash: yaml_data
 
   - name: "Major Version"
-    path: "%{facts.os.name}-%{facts.os.release.major}".yaml
+    path: "%{facts.os.name}-%{facts.os.release.major}.yaml"
     data_hash: yaml_data
 
   - name: "Distribution Name"
-    path: "%{facts.os.name}".yaml
+    path: "%{facts.os.name}.yaml"
     data_hash: yaml_data
 
   - name: "Operating System Family"
-    path: "%{facts.os.family}".yaml
+    path: "%{facts.os.family}.yaml"
     data_hash: yaml_data
 
   - name: Common
