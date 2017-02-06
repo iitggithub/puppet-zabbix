@@ -3,23 +3,24 @@ version: 4
 datadir: data
 hierarchy:
   - name: "Full Version"
-    backend: yaml
-    path: "%{facts.os.name}-%{facts.os.release.full}"
+    path: "%{facts.os.name}-%{facts.os.release.full}".yaml
+    data_hash: yaml_data
 
   - name: "Major Version"
-    backend: yaml
-    path: "%{facts.os.name}-%{facts.os.release.major}"
+    path: "%{facts.os.name}-%{facts.os.release.major}".yaml
+    data_hash: yaml_data
 
   - name: "Distribution Name"
-    backend: yaml
-    path: "%{facts.os.name}"
+    path: "%{facts.os.name}".yaml
+    data_hash: yaml_data
 
   - name: "Operating System Family"
-    backend: yaml
-    path: "%{facts.os.family}"
+    path: "%{facts.os.family}".yaml
+    data_hash: yaml_data
 
   - name: "common"
-    backend: yaml
+    path: common.yaml
+    data_hash: yaml_data
 
   - name: "agent"
-    backend: yaml
+    data_hash: yaml_data
