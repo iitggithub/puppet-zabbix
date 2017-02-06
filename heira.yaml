@@ -1,5 +1,5 @@
 ---
-version: 4
+version: 5
 datadir: data
 hierarchy:
   - name: "Full Version"
@@ -18,9 +18,10 @@ hierarchy:
     path: "%{facts.os.family}".yaml
     data_hash: yaml_data
 
-  - name: "common"
+  - name: Common
     path: common.yaml
     data_hash: yaml_data
 
-  - name: "agent"
+  - name: Agent
+    path: agent.yaml
     data_hash: yaml_data
