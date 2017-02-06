@@ -4,6 +4,8 @@ zabbix::agent::uninstall_options: []
 
 zabbix::agent::package_name: 'zabbix-agent'
 zabbix::agent::package_manage: true
+zabbix::package_manage: true
+package_manage: true
 zabbix::agent::package_ensure: 'installed'
 
 zabbix::agent::service_name: 'zabbix-agent'
